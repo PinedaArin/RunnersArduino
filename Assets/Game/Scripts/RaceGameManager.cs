@@ -93,17 +93,18 @@ public class RaceGameManager : MonoBehaviour
 
     private void IncrementProgress()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (SerialPortManager.Instance.stepPlayer_1 == 1)
         {
             progressAvatar_1 += Time.deltaTime * 0.5f;
+
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (SerialPortManager.Instance.stepPlayer_2 == 1)
         {
             progressAvatar_2 += Time.deltaTime * 0.5f;
 
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (SerialPortManager.Instance.stepPlayer_3 == 1)
         {
             progressAvatar_3 += Time.deltaTime * 0.5f;
 
