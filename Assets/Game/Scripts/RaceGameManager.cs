@@ -76,7 +76,8 @@ public class RaceGameManager : MonoBehaviour
 
         if (progressAvatar_1 > 1.0f || progressAvatar_2 > 1.0f || progressAvatar_3 > 1.0f)
         {
-            OnRaceFinished();
+            ResetAvatarProgress();
+            //OnRaceFinished();
 
         }
         
@@ -93,18 +94,17 @@ public class RaceGameManager : MonoBehaviour
 
     private void IncrementProgress()
     {
-        if (SerialPortManager.Instance.stepPlayer_1 == 1)
+        if (PlayerInputManager.Instance.GetPlayerInput(1) == 1)
         {
             progressAvatar_1 += Time.deltaTime * 0.5f;
-
         }
 
-        if (SerialPortManager.Instance.stepPlayer_2 == 1)
+        if (PlayerInputManager.Instance.GetPlayerInput(2) == 1)
         {
             progressAvatar_2 += Time.deltaTime * 0.5f;
 
         }
-        if (SerialPortManager.Instance.stepPlayer_3 == 1)
+        if (PlayerInputManager.Instance.GetPlayerInput(3) == 1)
         {
             progressAvatar_3 += Time.deltaTime * 0.5f;
 
@@ -146,7 +146,6 @@ public class RaceGameManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             textTime.text = time.ToString();
             time--;
-            Debug.Log(time);
         }
         if (time == -1)
         {
